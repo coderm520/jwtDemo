@@ -11,4 +11,8 @@ public class JwtHeader {
         this.alg=alg;
         this.typ=typ;
     }
+
+    //必须有无参构造函数 否则反序列化报错
+    public JwtHeader() {
+    }
 }

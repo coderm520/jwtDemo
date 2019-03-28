@@ -10,4 +10,7 @@ public class JwtSignature {
     public JwtSignature(String signature) {
         this.signature = signature;
     }
+
+    public JwtSignature() {
+    }
 }
