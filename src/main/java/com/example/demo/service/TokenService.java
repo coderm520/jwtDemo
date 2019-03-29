@@ -13,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
 public interface TokenService {
     void getToken(String userName,String pwd);
 
-    String getJwtToken(String userName,String pwd);
+    String getJwtToken(String userName);
 
     JwtReturnInfo checkJwt(String jwtStr) throws JsonProcessingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException;
 

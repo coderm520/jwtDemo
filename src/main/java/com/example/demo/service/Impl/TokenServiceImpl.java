@@ -27,7 +27,7 @@ public class TokenServiceImpl implements TokenService {
     private UserService userService;
 
     //过期时间
-    private final static Integer ExpireMinutes = 10;
+    private final static Integer ExpireMinutes = 3;
     private final static String Secret = "dgdH234@#%df1*";
     private static final String MAC_INSTANCE_NAME = "HMacSHA256";
 
@@ -35,33 +35,30 @@ public class TokenServiceImpl implements TokenService {
     public void getToken(String userName, String pwd) { }
 
     @Override
-    public String getJwtToken(String userName, String pwd) {
-        boolean loginResult = login(userName, pwd);
-        if (loginResult) {
-            UserInfo userInfo = userService.getByUserName(userName);
-            String rid = userInfo != null ? userInfo.getRoleInfo().getRoleId().toString() : "";
+    public String getJwtToken(String userName) {
+        UserInfo userInfo = userService.getByUserName(userName);
+        String rid = userInfo != null ? userInfo.getRoleInfo().getRoleId().toString() : "";
 
-            JwtHeader header = new JwtHeader("HS256", "JWT");
+        JwtHeader header = new JwtHeader("HS256", "JWT");
 
-            Long currentTimeMill = System.currentTimeMillis();
-            //currentTimeMill=543546L;//for test
-            Calendar calendar = java.util.Calendar.getInstance();
-            calendar.setTimeInMillis(currentTimeMill);
-            calendar.add(calendar.MINUTE, ExpireMinutes);
-            String timeStampStr = String.valueOf(calendar.getTimeInMillis());
+        Long currentTimeMill = System.currentTimeMillis();
+        //currentTimeMill=543546L;//for test
+        Calendar calendar = java.util.Calendar.getInstance();
+        calendar.setTimeInMillis(currentTimeMill);
+        calendar.add(calendar.MINUTE, ExpireMinutes);
+        String timeStampStr = String.valueOf(calendar.getTimeInMillis());
 
-            JwtPayload payload = new JwtPayload("coderm520.github.io", timeStampStr, "subtest", "jser", "0", String.valueOf(currentTimeMill), "jti", userName, rid);
+        JwtPayload payload = new JwtPayload("coderm520.github.io", timeStampStr, "subtest", "jser", "0", String.valueOf(currentTimeMill), "jti", userName, rid);
 
-            try {
-                String headerStr = getJwtStr(header);
-                String payloadStr = getJwtStr(payload);
-                String signatureStr = getJwtSignatureStr(headerStr, payloadStr);
+        try {
+            String headerStr = getJwtStr(header);
+            String payloadStr = getJwtStr(payload);
+            String signatureStr = getJwtSignatureStr(headerStr, payloadStr);
 
-                return getFinalToken(headerStr, payloadStr, signatureStr);
-            } catch (JsonProcessingException je) {
-            } catch (NoSuchAlgorithmException ne) {
-            } catch (InvalidKeyException ie) {
-            }
+            return getFinalToken(headerStr, payloadStr, signatureStr);
+        } catch (JsonProcessingException je) {
+        } catch (NoSuchAlgorithmException ne) {
+        } catch (InvalidKeyException ie) {
         }
         return "";
     }
@@ -102,7 +99,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public boolean login(String userName, String pwd) {
-        return true;
+        return userName.equals("mmm")&&pwd.equals("123456");
     }
 
 

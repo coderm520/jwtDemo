@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.JwtModel;
 import com.example.demo.model.JwtReturnInfo;
+import com.example.demo.model.LoginReturnInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,21 +23,17 @@ public class TokenServiceTest {
     @Autowired
     TokenService tokenService;
 
-    @Test
-    public void getToken(){
-        String userName="miaofb";
-        String pwd="123456";
-        String token = tokenService.getJwtToken(userName,pwd);
-        System.out.println("token is:"+token);
-
-    }
 
     @Test
     public void checkToken()
             throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException {
-        String userName="miaofb";
+        String userName="mmm";
         String pwd="123456";
-        String token = tokenService.getJwtToken(userName,pwd);
+        boolean logIn = tokenService.login(userName,pwd);
+        String token="";
+        if (logIn){
+            token = tokenService.getJwtToken(userName);
+        }
         System.out.println("token is:"+token);
 
         JwtReturnInfo returnInfo = tokenService.checkJwt(token);
