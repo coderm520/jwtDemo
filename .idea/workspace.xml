@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b96127d8-6980-445d-b898-29693606625e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtHeader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtPayload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtSignature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtSignature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtSignature.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/TokenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java" afterDir="false" />
@@ -23,24 +22,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="93" column="43" lean-forward="true" selection-start-line="93" selection-start-column="43" selection-end-line="93" selection-end-column="43" />
+            <state relative-caret-position="150">
+              <caret line="83" selection-start-line="83" selection-end-line="83" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8047#8048#0" expanded="true" />
+                <element signature="e#4435#4436#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -54,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="262">
+              <caret line="42" column="45" lean-forward="true" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/service/TokenService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+            <state relative-caret-position="304">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,13 +69,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/UserServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="196">
+              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -112,7 +99,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/com/service/TokenService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokeServiceImpl.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/components/MyTestComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/model/UserRole.java" />
@@ -121,10 +107,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/service/TokenService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtReturnInfo.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtHeader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtPayload.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtSignature.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java" />
       </list>
     </option>
@@ -353,32 +340,11 @@
       <option name="presentableId" value="Default" />
       <updated>1553650273168</updated>
       <workItem from="1553650277019" duration="16737000" />
-      <workItem from="1553675890989" duration="22853000" />
+      <workItem from="1553675890989" duration="29689000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TokenServiceTest_checkToken - 2019.03.28 at 17h 11m 39s.xml">
-      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TokenServiceTest_checkToken - 2019.03.28 at 17h 15m 25s.xml">
-      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TokenServiceTest_checkToken - 2019.03.28 at 17h 17m 50s.xml">
-      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TokenServiceTest_checkToken - 2019.03.28 at 17h 20m 04s.xml">
-      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TokenServiceTest_checkToken - 2019.03.28 at 17h 21m 46s.xml">
-      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TokenServiceTest_checkToken - 2019.03.28 at 17h 29m 14s.xml">
-      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TokenServiceTest_checkToken - 2019.03.28 at 17h 31m 04s.xml">
-      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TokenServiceTest_checkToken - 2019.03.28 at 17h 36m 21s.xml">
       <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
     </history-entry>
@@ -388,9 +354,30 @@
     <history-entry file="TokenServiceTest_checkToken - 2019.03.28 at 18h 23m 13s.xml">
       <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TokenServiceTest_checkToken - 2019.03.28 at 18h 30m 42s.xml">
+      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TokenServiceTest_checkToken - 2019.03.29 at 10h 04m 29s.xml">
+      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TokenServiceTest_checkToken - 2019.03.29 at 10h 14m 41s.xml">
+      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TokenServiceTest_checkToken - 2019.03.29 at 10h 27m 44s.xml">
+      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TokenServiceTest_checkToken - 2019.03.29 at 10h 43m 14s.xml">
+      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TokenServiceTest_checkToken - 2019.03.29 at 10h 51m 25s.xml">
+      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TokenServiceTest_checkToken - 2019.03.29 at 10h 58m 41s.xml">
+      <configuration name="TokenServiceTest.checkToken" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39590000" />
+    <option name="totallyTimeSpent" value="46426000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
@@ -404,7 +391,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32990867" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.35388127" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.42694065" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -435,159 +422,137 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>60</line>
+          <line>62</line>
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java</url>
-          <line>24</line>
+          <line>29</line>
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>262</line>
+          <line>179</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>67</line>
+          <line>69</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java</url>
-          <line>30</line>
+          <line>36</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java</url>
-          <line>37</line>
+          <line>43</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java</url>
-          <line>35</line>
+          <line>41</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java</url>
-          <line>33</line>
+          <line>39</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>184</line>
+          <line>90</line>
           <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>79</line>
+          <line>127</line>
           <properties />
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>87</line>
+          <line>148</line>
           <properties />
-          <option name="timeStamp" value="28" />
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>107</line>
+          <line>158</line>
           <properties />
-          <option name="timeStamp" value="29" />
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>96</line>
+          <line>159</line>
           <properties />
-          <option name="timeStamp" value="30" />
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>102</line>
+          <line>134</line>
           <properties />
-          <option name="timeStamp" value="32" />
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>104</line>
+          <line>139</line>
           <properties />
-          <option name="timeStamp" value="33" />
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>86</line>
+          <line>136</line>
           <properties />
-          <option name="timeStamp" value="34" />
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>218</line>
+          <line>131</line>
           <properties />
-          <option name="timeStamp" value="36" />
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>236</line>
+          <line>92</line>
           <properties />
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>89</line>
-          <properties />
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>113</line>
-          <properties />
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>157</line>
-          <properties />
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>239</line>
-          <properties />
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java</url>
-          <line>78</line>
-          <properties class="com.example.demo.service.Impl.TokenServiceImpl" method="checkJwt">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="38" />
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
-        <watch expression="Secret.getBytes()" />
-        <watch expression="Secret.getBytes(&quot;US-ASCII&quot;)" language="JAVA" />
-        <watch expression="jwtStr.split(&quot;\\.&quot;)" language="JAVA" />
-        <watch expression="Base64.getUrlDecoder().decode(jwtArr[0])" />
-        <watch expression="Base64.getUrlDecoder().decode(jwtArr[1]+&quot;=&quot;)" language="JAVA" />
-        <watch expression="decodeFast(jwtArr[1].toCharArray())" />
+        <watch expression="System.currentTimeMillis()" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>jwtSignatureStr==jwtModel.getSignature()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Base64.getUrlEncoder().withoutPadding().encodeToString(result.getBytes(StandardCharsets.US_ASCII))</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Base64Utils.encodeToString(result.getBytes(StandardCharsets.US_ASCII))</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>Base64.getUrlDecoder().decode(jwtArr[1]+&quot;=&quot;)</expression-string>
         <language-id>JAVA</language-id>
@@ -617,13 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Base64.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -746,38 +704,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/service/TokenService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtSignature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-          <folding>
-            <element signature="e#245#246#0" expanded="true" />
-            <element signature="e#287#288#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtPayload.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="478">
           <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -798,6 +728,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Base64.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="259" column="22" selection-start-line="259" selection-start-column="22" selection-end-line="259" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/5.1.5.RELEASE/spring-core-5.1.5.RELEASE.jar!/org/springframework/util/Base64Utils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="26" column="65" selection-start-line="26" selection-start-column="65" selection-end-line="26" selection-end-column="65" />
+          <folding>
+            <element signature="e#1230#1231#0" expanded="true" />
+            <element signature="e#1300#1301#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -807,31 +755,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="247">
+          <caret line="13" column="39" lean-forward="true" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/service/TokenService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtSignature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#245#246#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/model/JwtModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4435#4436#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/example/demo/service/TokenServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="262">
+          <caret line="42" column="45" lean-forward="true" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/service/Impl/TokenServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="93" column="43" lean-forward="true" selection-start-line="93" selection-start-column="43" selection-end-line="93" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8047#8048#0" expanded="true" />
           </folding>
         </state>
       </provider>

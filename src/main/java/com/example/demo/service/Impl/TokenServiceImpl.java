@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -21,7 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Service
-public class  TokenServiceImpl implements TokenService {
+public class TokenServiceImpl implements TokenService {
 
     @Autowired
     private UserService userService;
@@ -35,7 +36,7 @@ public class  TokenServiceImpl implements TokenService {
     private static final int[] BASE64_IALPHABET = new int[256];
 
     private static final int IALPHABET_MAX_INDEX = BASE64_IALPHABET.length - 1;
-    private final int[] IALPHABET=BASE64URL_IALPHABET;
+    private final int[] IALPHABET = BASE64URL_IALPHABET;
 
 
     @Override
@@ -45,29 +46,29 @@ public class  TokenServiceImpl implements TokenService {
 
     @Override
     public String getJwtToken(String userName, String pwd) {
-        boolean loginResult=login(userName,pwd);
+        boolean loginResult = login(userName, pwd);
         if (loginResult) {
             UserInfo userInfo = userService.getByUserName(userName);
-            String rid=userInfo!=null?userInfo.getRoleInfo().getRoleId().toString():"";
+            String rid = userInfo != null ? userInfo.getRoleInfo().getRoleId().toString() : "";
 
             JwtHeader header = new JwtHeader("HS256", "JWT");
 
             Long currentTimeMill = System.currentTimeMillis();
+            //currentTimeMill=543546L;//for test
             Calendar calendar = java.util.Calendar.getInstance();
             calendar.setTimeInMillis(currentTimeMill);
             calendar.add(calendar.MINUTE, ExpireMinites);
             String timeStampStr = String.valueOf(calendar.getTimeInMillis());
 
-            JwtPayload payload = new JwtPayload("coderm520.github.io", timeStampStr, "subtest", "jser", "0", String.valueOf(currentTimeMill), "jti", userName,rid);
+            JwtPayload payload = new JwtPayload("coderm520.github.io", timeStampStr, "subtest", "jser", "0", String.valueOf(currentTimeMill), "jti", userName, rid);
 
             try {
                 String headerStr = getJwtStr(header);
                 String payloadStr = getJwtStr(payload);
-                String signatureStr = getJwtSignatureStr(headerStr, headerStr);
+                String signatureStr = getJwtSignatureStr(headerStr, payloadStr);
 
                 return getFinalToken(headerStr, payloadStr, signatureStr);
             } catch (JsonProcessingException je) {
-            } catch (UnsupportedEncodingException ue) {
             } catch (NoSuchAlgorithmException ne) {
             } catch (InvalidKeyException ie) {
             }
@@ -75,116 +76,21 @@ public class  TokenServiceImpl implements TokenService {
         return "";
     }
 
+
     @Override
-    public JwtReturnInfo checkJwt(String jwtStr) {
-        String[] jwtArr = jwtStr.split("\\.");
-        JwtModel jwtModel=new JwtModel();
-        JwtReturnInfo jwtReturnInfo=new JwtReturnInfo();
-        jwtReturnInfo.setHttpStatus(HttpStatus.FORBIDDEN);
-        if (jwtArr!=null&&jwtArr.length>0){
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                String headerStr=new String(Base64.getUrlDecoder().decode(jwtArr[0]), StandardCharsets.US_ASCII);
-                JwtHeader header = objectMapper.readValue(headerStr, JwtHeader.class);
-                //String payloadStr=new String(Base64.getUrlDecoder().decode(jwtArr[1]), StandardCharsets.US_ASCII);
-                String payloadStr=new String(decodeFast(jwtArr[1].toCharArray()), StandardCharsets.US_ASCII);
-                JwtPayload payload = objectMapper.readValue(payloadStr, JwtPayload.class);
-                String signatureStr=new String(Base64.getUrlDecoder().decode(jwtArr[2]), StandardCharsets.US_ASCII);
-                JwtSignature signature = objectMapper.readValue(signatureStr, JwtSignature.class);
-                jwtModel.setHeader(header);
-                jwtModel.setPayload(payload);
-                jwtModel.setSignature(signature);
-                return checkJwt(jwtModel);
-            }
-            catch (IOException e){
-                e.printStackTrace();
-            }
-            catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            } catch (InvalidKeyException e) {
-                e.printStackTrace();
-            }
-        }
-        return jwtReturnInfo;
-    }
-
-    final byte[] decodeFast(char[] sArr) throws IOException {
-
-        // Check special case
-        int sLen = sArr != null ? sArr.length : 0;
-        if (sLen == 0) {
-            return new byte[0];
-        }
-
-        int sIx = 0, eIx = sLen - 1;    // Start and end index after trimming.
-
-        // Trim illegal chars from start
-        while (sIx < eIx && BASE64URL_IALPHABET[sArr[sIx]] < 0) {
-            sIx++;
-        }
-
-        // Trim illegal chars from end
-        while (eIx > 0 && BASE64URL_IALPHABET[sArr[eIx]] < 0) {
-            eIx--;
-        }
-
-        // get the padding count (=) (0, 1 or 2)
-        int pad = sArr[eIx] == '=' ? (sArr[eIx - 1] == '=' ? 2 : 1) : 0;  // Count '=' at end.
-        int cCnt = eIx - sIx + 1;   // Content count including possible separators
-        int sepCnt = sLen > 76 ? (sArr[76] == '\r' ? cCnt / 78 : 0) << 1 : 0;
-
-        int len = ((cCnt - sepCnt) * 6 >> 3) - pad; // The number of decoded bytes
-        byte[] dArr = new byte[len];       // Preallocate byte[] of exact length
-
-        // Decode all but the last 0 - 2 bytes.
-        int d = 0;
-        for (int cc = 0, eLen = (len / 3) * 3; d < eLen; ) {
-
-            // Assemble three bytes into an int from four "valid" characters.
-            int i = ctoi(sArr[sIx++]) << 18 | ctoi(sArr[sIx++]) << 12 | ctoi(sArr[sIx++]) << 6 | ctoi(sArr[sIx++]);
-
-            // Add the bytes
-            dArr[d++] = (byte) (i >> 16);
-            dArr[d++] = (byte) (i >> 8);
-            dArr[d++] = (byte) i;
-
-            // If line separator, jump over it.
-            if (sepCnt > 0 && ++cc == 19) {
-                sIx += 2;
-                cc = 0;
-            }
-        }
-
-        if (d < len) {
-            // Decode last 1-3 bytes (incl '=') into 1-3 bytes
-            int i = 0;
-            for (int j = 0; sIx <= eIx - pad; j++) {
-                i |= ctoi(sArr[sIx++]) << (18 - j * 6);
-            }
-
-            for (int r = 16; d < len; r -= 8) {
-                dArr[d++] = (byte) (i >> r);
-            }
-        }
-
-        return dArr;
-    }
-    private int ctoi(char c) {
-        int i = c > IALPHABET_MAX_INDEX ? -1 : IALPHABET[c];
-        if (i < 0) {
-            //String msg = "Illegal " + getName() + " character: '" + c + "'";
-            //throw new IOException(msg);
-        }
-        return i;
+    public JwtReturnInfo checkJwt(String jwtStr)
+            throws JsonProcessingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
+        JwtModel jwtModel = getJwtModelByJwtStr(jwtStr);
+        return checkJwt(jwtModel);
     }
 
     @Override
     public JwtReturnInfo checkJwt(JwtModel jwtModel)
             throws NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException, JsonProcessingException {
 
-        JwtReturnInfo jwtReturnInfo=new JwtReturnInfo();
-        String jwtSignatureStr=getJwtSignatureStr(jwtModel.getHeader(),jwtModel.getPayload());
-        if (!jwtSignatureStr.equals(jwtModel.getSignature())){
+        JwtReturnInfo jwtReturnInfo = new JwtReturnInfo();
+        String jwtSignatureStr = getJwtSignatureStr(jwtModel.getHeader(), jwtModel.getPayload());
+        if (!jwtSignatureStr.equals(jwtModel.getSignature())) {
             jwtReturnInfo.setHttpStatus(HttpStatus.UNAUTHORIZED);
             return jwtReturnInfo;
         }
@@ -192,7 +98,7 @@ public class  TokenServiceImpl implements TokenService {
         //过期时间
         JwtPayload payload = jwtModel.getPayload();
         Long expTimeStamp = Long.valueOf(payload.getExp());
-        if (expTimeStamp<System.currentTimeMillis()){
+        if (expTimeStamp < System.currentTimeMillis()) {
             jwtReturnInfo.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
             return jwtReturnInfo;
         }
@@ -209,49 +115,60 @@ public class  TokenServiceImpl implements TokenService {
         return true;
     }
 
+
+    private JwtModel getJwtModelByJwtStr(String jwtStr) {
+        String[] jwtArr = jwtStr.split("\\.");
+        JwtModel jwtModel = new JwtModel();
+
+        if (jwtArr != null && jwtArr.length > 0) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                String headerStr = new String(Base64.getUrlDecoder().decode(jwtArr[0]), StandardCharsets.US_ASCII);
+                JwtHeader header = objectMapper.readValue(headerStr, JwtHeader.class);
+                //String payloadStr=new String(decodeFast(jwtArr[1].toCharArray()), StandardCharsets.US_ASCII);
+                String payloadStr = new String(Base64Utils.decodeFromUrlSafeString(jwtArr[1]), StandardCharsets.US_ASCII);
+                JwtPayload payload = objectMapper.readValue(payloadStr, JwtPayload.class);
+                //String signatureStr=getJwtSignatureStr(headerStr,payloadStr);
+                //JwtSignature signature = objectMapper.readValue(signatureStr, JwtSignature.class);
+                jwtModel.setHeader(header);
+                jwtModel.setPayload(payload);
+                jwtModel.setSignature(jwtArr[2]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return jwtModel;
+    }
+
     private <T> String getJwtStr(T jwtObject)
-            throws JsonProcessingException, UnsupportedEncodingException {
+            throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         String result = objectMapper.writeValueAsString(jwtObject);
         System.out.println(result);
-        result = Base64.getUrlEncoder().encodeToString(result.getBytes(StandardCharsets.US_ASCII));
-        if (result.endsWith("=")) {
-            result = result.substring(0, result.length() - 1);
-        }
-        if (result.endsWith("=")) {
-            result = result.substring(0, result.length() - 1);
-        }
+        result = Base64.getUrlEncoder().withoutPadding().encodeToString(result.getBytes(StandardCharsets.US_ASCII));
         return result;
     }
 
     private String getJwtSignatureStr(String jwtHeader, String jwtPayload)
-            throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
+            throws NoSuchAlgorithmException, InvalidKeyException {
         String result = jwtHeader + "." + jwtPayload;
         Mac hmac_sha256 = Mac.getInstance(MAC_INSTANCE_NAME);
         SecretKeySpec keySpec = new SecretKeySpec(Secret.getBytes(), MAC_INSTANCE_NAME);
         hmac_sha256.init(keySpec);
         byte[] bytes = hmac_sha256.doFinal(result.getBytes(StandardCharsets.US_ASCII));
-
-        String signature = Base64.getUrlEncoder().encodeToString(bytes);
-        if (signature.endsWith("=")) {
-            signature = signature.substring(0, signature.length() - 1);
-        }
-        if (signature.endsWith("=")) {
-            signature = signature.substring(0, signature.length() - 1);
-        }
+        String signature = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
         return signature;
     }
 
     private String getJwtSignatureStr(JwtHeader jwtHeader, JwtPayload jwtPayload)
-            throws JsonProcessingException, UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException {
+            throws JsonProcessingException, NoSuchAlgorithmException, InvalidKeyException {
         String jwtHeaderStr = getJwtStr(jwtHeader);
         String jwtPayloadStr = getJwtStr(jwtPayload);
         return getJwtSignatureStr(jwtHeaderStr, jwtPayloadStr);
     }
 
     private String getFinalToken(JwtModel jwtModel)
-            throws JsonProcessingException, UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException {
-        ObjectMapper objectMapper = new ObjectMapper();
+            throws JsonProcessingException, NoSuchAlgorithmException, InvalidKeyException {
         String headerStr = getJwtStr(jwtModel.getHeader());
         String payloadStr = getJwtStr(jwtModel.getPayload());
         String signatureStr = getJwtSignatureStr(headerStr, payloadStr);

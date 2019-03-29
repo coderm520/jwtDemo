@@ -8,7 +8,7 @@ public class JwtModel {
 
     private JwtPayload payload;
 
-    private JwtSignature signature;
+    private String signature;
 
     public JwtModel(){}
     public JwtModel(JwtHeader header, JwtPayload payload) {

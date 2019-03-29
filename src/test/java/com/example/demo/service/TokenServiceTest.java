@@ -2,11 +2,16 @@ package com.example.demo.service;
 
 import com.example.demo.model.JwtModel;
 import com.example.demo.model.JwtReturnInfo;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 import static org.junit.Assert.*;
 
@@ -27,7 +32,8 @@ public class TokenServiceTest {
     }
 
     @Test
-    public void checkToken(){
+    public void checkToken()
+            throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException {
         String userName="miaofb";
         String pwd="123456";
         String token = tokenService.getJwtToken(userName,pwd);

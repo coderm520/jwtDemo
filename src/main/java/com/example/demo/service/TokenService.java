@@ -15,7 +15,7 @@ public interface TokenService {
 
     String getJwtToken(String userName,String pwd);
 
-    JwtReturnInfo checkJwt(String jwtStr);
+    JwtReturnInfo checkJwt(String jwtStr) throws JsonProcessingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException;
 
     JwtReturnInfo checkJwt(JwtModel jwtModel) throws NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException, JsonProcessingException;
 
