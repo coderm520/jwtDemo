@@ -19,7 +19,6 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.Calendar;
-import java.util.Date;
 
 @Service
 public class TokenServiceImpl implements TokenService {
@@ -28,21 +27,12 @@ public class TokenServiceImpl implements TokenService {
     private UserService userService;
 
     //过期时间
-    private final static Integer ExpireMinites = 10;
+    private final static Integer ExpireMinutes = 10;
     private final static String Secret = "dgdH234@#%df1*";
     private static final String MAC_INSTANCE_NAME = "HMacSHA256";
-    private static final char[] BASE64URL_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_".toCharArray();
-    private static final int[] BASE64URL_IALPHABET = new int[256];
-    private static final int[] BASE64_IALPHABET = new int[256];
-
-    private static final int IALPHABET_MAX_INDEX = BASE64_IALPHABET.length - 1;
-    private final int[] IALPHABET = BASE64URL_IALPHABET;
-
 
     @Override
-    public void getToken(String userName, String pwd) {
-
-    }
+    public void getToken(String userName, String pwd) { }
 
     @Override
     public String getJwtToken(String userName, String pwd) {
@@ -57,7 +47,7 @@ public class TokenServiceImpl implements TokenService {
             //currentTimeMill=543546L;//for test
             Calendar calendar = java.util.Calendar.getInstance();
             calendar.setTimeInMillis(currentTimeMill);
-            calendar.add(calendar.MINUTE, ExpireMinites);
+            calendar.add(calendar.MINUTE, ExpireMinutes);
             String timeStampStr = String.valueOf(calendar.getTimeInMillis());
 
             JwtPayload payload = new JwtPayload("coderm520.github.io", timeStampStr, "subtest", "jser", "0", String.valueOf(currentTimeMill), "jti", userName, rid);
@@ -79,14 +69,14 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public JwtReturnInfo checkJwt(String jwtStr)
-            throws JsonProcessingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
+            throws JsonProcessingException, NoSuchAlgorithmException, InvalidKeyException {
         JwtModel jwtModel = getJwtModelByJwtStr(jwtStr);
         return checkJwt(jwtModel);
     }
 
     @Override
     public JwtReturnInfo checkJwt(JwtModel jwtModel)
-            throws NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException, JsonProcessingException {
+            throws NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException {
 
         JwtReturnInfo jwtReturnInfo = new JwtReturnInfo();
         String jwtSignatureStr = getJwtSignatureStr(jwtModel.getHeader(), jwtModel.getPayload());
@@ -125,11 +115,8 @@ public class TokenServiceImpl implements TokenService {
             try {
                 String headerStr = new String(Base64.getUrlDecoder().decode(jwtArr[0]), StandardCharsets.US_ASCII);
                 JwtHeader header = objectMapper.readValue(headerStr, JwtHeader.class);
-                //String payloadStr=new String(decodeFast(jwtArr[1].toCharArray()), StandardCharsets.US_ASCII);
                 String payloadStr = new String(Base64Utils.decodeFromUrlSafeString(jwtArr[1]), StandardCharsets.US_ASCII);
                 JwtPayload payload = objectMapper.readValue(payloadStr, JwtPayload.class);
-                //String signatureStr=getJwtSignatureStr(headerStr,payloadStr);
-                //JwtSignature signature = objectMapper.readValue(signatureStr, JwtSignature.class);
                 jwtModel.setHeader(header);
                 jwtModel.setPayload(payload);
                 jwtModel.setSignature(jwtArr[2]);
