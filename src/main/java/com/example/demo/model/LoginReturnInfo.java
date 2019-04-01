@@ -6,6 +6,7 @@ import lombok.Data;
 public class LoginReturnInfo extends ReturnInfo {
     private String token;
 
+    private String returnUrl;
     public LoginReturnInfo() {
     }
 }

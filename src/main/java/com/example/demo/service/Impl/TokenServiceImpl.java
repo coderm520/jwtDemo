@@ -27,7 +27,7 @@ public class TokenServiceImpl implements TokenService {
     private UserService userService;
 
     //过期时间
-    private final static Integer ExpireMinutes = 3;
+    private final static Integer ExpireMinutes = 10;
     private final static String Secret = "dgdH234@#%df1*";
     private static final String MAC_INSTANCE_NAME = "HMacSHA256";
 

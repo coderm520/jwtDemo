@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script th:src="@{/js/jquery-1.12.3.js}"></script>
+
+<script>
+    function addUser() {
+        var token=localStorage.getItem("token");
+        if (token==''||token == null||token==undefined){
+            window.location.href='/login/loginA';
+        }
+        $.ajax({
+            url:  '/test/addrole',
+            type: 'POST',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer '+token);
+            },
+            data: {
+                "name":$('#txtRoleName').val()
+            },
+            success: function (response) {
+                debugger;
+            },
+            error: function () { }
+        });
+    }
+
+</script>
+    index index
+
+<br />
+<label>角色名：</label><input id="txtRoleName" type="text" />
+<br />
+<button onclick="addUser();">添加</button>
+</body>
+</html>
