@@ -3,7 +3,6 @@ package com.example.demo.aspect;
 import com.example.demo.components.Login;
 import com.example.demo.model.JwtReturnInfo;
 import com.example.demo.service.TokenService;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.CodeSignature;
@@ -46,9 +45,14 @@ public class LogInAspect {
 
     }
 
-    @Before(value = "access()")
+    //@Before(value = "access()")
+    @Before("execution(*  com.example.demo.controller.TestController.Test(..))")
     public void beforeAccess() {
         System.out.println("开始验证登录状态");
+//        JwtTestReturnInfo jwtTestReturnInfo=new JwtTestReturnInfo();
+//        jwtTestReturnInfo.setName("asdf");
+//        jwtTestReturnInfo.setClassValue("dsf");
+//        String ss = JwtHelper.getTestValue();
     }
 
     @Around(value = "@annotation(login)")

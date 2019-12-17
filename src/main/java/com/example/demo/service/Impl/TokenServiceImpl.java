@@ -13,7 +13,6 @@ import org.springframework.util.Base64Utils;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -48,7 +47,18 @@ public class TokenServiceImpl implements TokenService {
         calendar.add(calendar.MINUTE, ExpireMinutes);
         String timeStampStr = String.valueOf(calendar.getTimeInMillis());
 
-        JwtPayload payload = new JwtPayload("coderm520.github.io", timeStampStr, "subtest", "jser", "0", String.valueOf(currentTimeMill), "jti", userName, rid);
+        JwtPayloadBuilder jwtPayloadBuilder = new JwtPayloadBuilder();
+        JwtPayload payload = jwtPayloadBuilder
+                .iss("coderm520.github.io")
+                .exp(timeStampStr)
+                .sub("subtest")
+                .aud("jser")
+                .nbf("0")
+                .iat(String.valueOf(currentTimeMill))
+                .jti("jti")
+                .uname(userName)
+                .rid(rid)
+                .build();
 
         try {
             String headerStr = getJwtStr(header);
