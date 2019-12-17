@@ -1,7 +1,7 @@
 package com.example.demo.aspect;
 
 import com.example.demo.components.Login;
-import com.example.demo.model.JwtReturnInfo;
+import com.example.demo.model.jwt.JwtReturnInfo;
 import com.example.demo.service.TokenService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;

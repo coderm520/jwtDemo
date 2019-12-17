@@ -1,9 +1,8 @@
 package com.example.demo.service;
 
 
-import com.example.demo.model.JwtModel;
-import com.example.demo.model.JwtReturnInfo;
-import com.example.demo.model.UserInfo;
+import com.example.demo.model.jwt.JwtModel;
+import com.example.demo.model.jwt.JwtReturnInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.io.UnsupportedEncodingException;
