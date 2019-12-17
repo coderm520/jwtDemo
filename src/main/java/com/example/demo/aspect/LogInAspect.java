@@ -24,35 +24,17 @@ import java.lang.reflect.Method;
 @Aspect
 public class LogInAspect {
 
-    static final String LOGIN_URL="/login/loginA";
+    static final String LOGIN_URL="/login/test1";
 
     @Autowired
     TokenService tokenService;
 
-//    @Pointcut("execution(* com.example.demo.controller.*.*(..))")
-//    public void access() {
-//    }
-//
-//    @Before("access()")
-//    public void beforeAccess(JoinPoint joinPoint){
-//        Object[] args = joinPoint.getArgs();
-//        System.out.println("beforeAccess,参数 : " + Arrays.toString(args));
-//
-//    }
-
     @Pointcut(value = "@annotation(com.example.demo.components.Login)")
-    public void access() {
+    public void access() { }
 
-    }
-
-    //@Before(value = "access()")
     @Before("execution(*  com.example.demo.controller.TestController.Test(..))")
     public void beforeAccess() {
         System.out.println("开始验证登录状态");
-//        JwtTestReturnInfo jwtTestReturnInfo=new JwtTestReturnInfo();
-//        jwtTestReturnInfo.setName("asdf");
-//        jwtTestReturnInfo.setClassValue("dsf");
-//        String ss = JwtHelper.getTestValue();
     }
 
     @Around(value = "@annotation(login)")

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.components.Login;
 import com.example.demo.model.LoginReturnInfo;
 import com.example.demo.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,12 @@ public class LoginController {
 
     @Autowired
     TokenService tokenService;
+
+    @RequestMapping(value = "/test1")
+    @Login
+    public String test1() {
+        return "aaaaaaaa";
+    }
 
     @ResponseBody
     @PostMapping(value = "/do")
